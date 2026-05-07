@@ -33,7 +33,7 @@ const StoryHero = () => {
           </div>
 
           <div className="mb-7 flex w-full justify-center md:mb-8">
-            <h1 className="flex flex-wrap items-center justify-center font-serif text-[3.35rem] font-light leading-[0.88] tracking-[0.12em] text-white sm:text-[4.5rem] md:text-[8rem] lg:text-[11rem] xl:text-[12rem]">
+            <h1 className="flex flex-wrap items-center justify-center font-serif text-[3.25rem] font-light leading-[0.88] tracking-[0.12em] text-white sm:text-[4.5rem] md:text-[8rem] lg:text-[9rem] xl:text-[10rem]">
               {'OBSIDIAN'.split('').map((char, index) => (
                 <motion.span
                   key={index}

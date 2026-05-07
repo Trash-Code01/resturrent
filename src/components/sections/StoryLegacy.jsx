@@ -28,12 +28,12 @@ const StoryLegacy = () => {
 
         <div className="relative flex w-full flex-col justify-between gap-4 md:flex-row md:items-stretch md:gap-0">
           {milestones.map((item, index) => {
-            const baseDelay = index * 0.9;
+            const baseDelay = index * 0.3;
 
             return (
               <div
                 key={item.year}
-                className="relative flex w-full flex-row items-start rounded-[24px] border border-white/[0.05] bg-white/[0.02] px-5 py-5 text-left md:mb-0 md:flex-1 md:flex-col md:items-center md:rounded-none md:border-transparent md:bg-transparent md:px-0 md:py-0 md:text-center"
+                className="relative flex w-full flex-row items-stretch text-left pb-10 md:pb-0 md:flex-1 md:flex-col md:items-center md:text-center"
               >
                 <div className="flex w-full flex-col justify-end pl-5 md:mb-10 md:min-h-[80px] md:items-center md:pl-0">
                   <motion.span
@@ -57,14 +57,14 @@ const StoryLegacy = () => {
                   </motion.h4>
                 </div>
 
-                <div className="relative my-1 flex h-full w-8 flex-col items-center justify-center md:my-3 md:h-auto md:w-full md:flex-row">
+                <div className="relative flex h-full w-8 flex-col items-center justify-start pt-[10px] md:pt-0 md:my-3 md:h-auto md:w-full md:flex-row md:justify-center">
                   {index < milestones.length - 1 && (
                     <motion.div
                       initial={{ scaleY: 0 }}
                       whileInView={{ scaleY: 1 }}
                       viewport={{ once: false, margin: '-100px' }}
-                      transition={{ duration: 0.5, delay: baseDelay + 0.4, ease: 'linear' }}
-                      className="absolute top-[18px] bottom-[-18px] left-1/2 block w-px -translate-x-1/2 origin-top bg-[#d4af37]/30 md:hidden"
+                      transition={{ duration: 0.3, delay: baseDelay + 0.2, ease: 'linear' }}
+                      className="absolute top-[20px] bottom-[-10px] left-1/2 z-0 block w-px -translate-x-1/2 origin-top bg-[#d4af37]/30 md:hidden"
                     />
                   )}
 
