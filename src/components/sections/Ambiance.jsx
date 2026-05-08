@@ -58,13 +58,12 @@ function attachTilt(el) {
 }
 
 /* ─── IMAGE CARD ─────────────────────────────────────────────────────────── */
-const ImageCard = React.forwardRef(({ src, label, tag, gridArea }, ref) => (
+const ImageCard = React.forwardRef(({ src, label, tag, className }, ref) => (
   <div
     ref={ref}
     data-cardtype="img"
-    className="group relative overflow-hidden cursor-pointer"
+    className={`group relative h-full overflow-hidden cursor-pointer ${className || ''}`}
     style={{
-      gridArea,
       border: '1px solid rgba(255,255,255,0.05)',
       transformStyle: 'preserve-3d',
       willChange: 'transform',
@@ -72,12 +71,11 @@ const ImageCard = React.forwardRef(({ src, label, tag, gridArea }, ref) => (
   >
     {/* ── image ── */}
     <div className="absolute inset-0 overflow-hidden">
-      <div className="gallery-parallax-wrapper w-full h-full">
+      <div className="gallery-parallax-wrapper flex w-full h-full items-center justify-center bg-black">
         <img
           src={src}
           alt={label}
-          className="w-full h-full object-cover scale-[1.15]
-                     transition-transform duration-[1100ms] ease-out group-hover:scale-100"
+          className="w-full h-full object-contain object-center p-2 sm:p-3 lg:p-0 lg:object-cover"
         />
       </div>
     </div>
@@ -87,7 +85,7 @@ const ImageCard = React.forwardRef(({ src, label, tag, gridArea }, ref) => (
 
     {/* ── gold shimmer (mouse-tracked) ── */}
     <div
-      className="card-shine absolute inset-0 z-20 pointer-events-none opacity-0"
+      className="card-shine absolute inset-0 z-20 pointer-events-none opacity-0 hidden lg:block"
       style={{
         background: 'radial-gradient(ellipse 55% 55% at 50% 50%, rgba(212,175,55,0.28) 0%, transparent 70%)',
         backgroundSize: '200% 200%',
@@ -95,25 +93,25 @@ const ImageCard = React.forwardRef(({ src, label, tag, gridArea }, ref) => (
     />
 
     {/* ── top-left corner bracket ── */}
-    <div className="absolute top-5 left-5 z-30" style={{ width: 24, height: 24 }}>
+    <div className="absolute top-4 left-4 z-30 sm:top-5 sm:left-5" style={{ width: 24, height: 24 }}>
       <div className="absolute top-0 left-0 h-px bg-amber-400/50 w-0 group-hover:w-full transition-all duration-500" />
       <div className="absolute top-0 left-0 w-px bg-amber-400/50 h-0 group-hover:h-full transition-all duration-500" />
     </div>
 
     {/* ── tag ── */}
-    <span className="absolute top-5 right-5 z-30 font-serif italic text-[11px]
+    <span className="absolute top-4 right-4 z-30 font-serif italic text-[10px] sm:text-[11px]
                      text-white/20 tracking-[0.3em] group-hover:text-amber-400/50
-                     transition-colors duration-500">
+                     transition-colors duration-500 sm:top-5 sm:right-5">
       {tag}
     </span>
 
     {/* ── bottom label ── */}
-    <div className="absolute bottom-0 left-0 right-0 p-5 z-30">
+    <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-5 z-30">
       <div className="h-px bg-amber-500/40 mb-3 w-6 group-hover:w-12 transition-all duration-700" />
-      <p className="text-white font-serif uppercase tracking-[0.18em] text-sm leading-none">
+      <p className="text-white font-serif uppercase tracking-[0.14em] text-[11px] sm:text-sm leading-none">
         {label}
       </p>
-      <div className="flex items-center gap-2 mt-2 opacity-0 translate-y-2
+      <div className="hidden lg:flex items-center gap-2 mt-2 opacity-0 translate-y-2
                       group-hover:opacity-100 group-hover:translate-y-0
                       transition-all duration-500 ease-out">
         <span className="text-amber-400/70 text-[10px] uppercase tracking-[0.4em] font-sans">Explore</span>
@@ -126,13 +124,12 @@ const ImageCard = React.forwardRef(({ src, label, tag, gridArea }, ref) => (
 ));
 
 /* ─── TEXT CARD ──────────────────────────────────────────────────────────── */
-const TextCard = React.forwardRef(({ title, subtitle, desc, price, number, gridArea }, ref) => (
+const TextCard = React.forwardRef(({ title, subtitle, desc, price, number, className }, ref) => (
   <div
     ref={ref}
     data-cardtype="text"
-    className="group relative overflow-hidden cursor-pointer flex flex-col justify-between p-6 xl:p-8"
+    className={`group relative h-full overflow-hidden cursor-pointer flex flex-col justify-between p-3 sm:p-5 xl:p-8 ${className || ''}`}
     style={{
-      gridArea,
       background: 'linear-gradient(140deg, #131210 0%, #0c0c0a 100%)',
       border: '1px solid rgba(212,175,55,0.10)',
       transformStyle: 'preserve-3d',
@@ -146,7 +143,7 @@ const TextCard = React.forwardRef(({ title, subtitle, desc, price, number, gridA
 
     {/* ── shimmer ── */}
     <div
-      className="card-shine absolute inset-0 z-10 pointer-events-none opacity-0"
+      className="card-shine absolute inset-0 z-10 pointer-events-none opacity-0 hidden lg:block"
       style={{
         background: 'radial-gradient(ellipse 80% 80% at 50% 50%, rgba(212,175,55,0.07) 0%, transparent 65%)',
         backgroundSize: '200% 200%',
@@ -154,12 +151,12 @@ const TextCard = React.forwardRef(({ title, subtitle, desc, price, number, gridA
     />
 
     {/* ── TL bracket ── */}
-    <div className="absolute top-5 left-5 z-20" style={{ width: 18, height: 18 }}>
+    <div className="absolute top-4 left-4 z-20 sm:top-5 sm:left-5" style={{ width: 18, height: 18 }}>
       <div className="absolute top-0 left-0 h-px w-full bg-amber-500/35" />
       <div className="absolute top-0 left-0 w-px h-full bg-amber-500/35" />
     </div>
     {/* ── BR bracket — animates in on hover ── */}
-    <div className="absolute bottom-5 right-5 z-20" style={{ width: 18, height: 18 }}>
+    <div className="absolute bottom-4 right-4 z-20 sm:bottom-5 sm:right-5" style={{ width: 18, height: 18 }}>
       <div className="absolute bottom-0 right-0 h-px w-full bg-amber-500/35
                       scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-right" />
       <div className="absolute bottom-0 right-0 w-px h-full bg-amber-500/35
@@ -168,7 +165,7 @@ const TextCard = React.forwardRef(({ title, subtitle, desc, price, number, gridA
 
     {/* ── ghost number ── */}
     <span className="absolute right-3 bottom-2 z-10 select-none pointer-events-none
-                     font-serif text-[6rem] leading-none
+                     font-serif text-[3.8rem] sm:text-[6rem] leading-none
                      text-white/[0.022] group-hover:text-amber-400/[0.045]
                      transition-colors duration-700">
       {number}
@@ -177,19 +174,19 @@ const TextCard = React.forwardRef(({ title, subtitle, desc, price, number, gridA
     {/* ── content ── */}
     <div className="relative z-20 flex items-center gap-3">
       <div className="h-px w-5 bg-amber-500/45 flex-shrink-0" />
-      <span className="font-serif italic text-amber-400/55 text-[11px] tracking-[0.35em] uppercase">
+      <span className="font-serif italic text-amber-400/55 text-[9px] sm:text-[11px] tracking-[0.22em] sm:tracking-[0.35em] uppercase">
         {subtitle}
       </span>
     </div>
 
-    <div className="relative z-20 flex-1 flex flex-col justify-center py-4">
+    <div className="relative z-20 flex-1 flex flex-col justify-center py-2.5 sm:py-4">
       <h4 className="font-serif uppercase text-white tracking-tight leading-none
-                     text-2xl md:text-3xl xl:text-[2.1rem] mb-3
+                     text-[1.08rem] sm:text-[1.8rem] md:text-3xl xl:text-[2.1rem] mb-2.5
                      group-hover:text-amber-50 transition-colors duration-500">
         {title}
       </h4>
-      <p className="text-white/38 font-sans text-xs md:text-sm leading-relaxed
-                    max-w-[22ch] tracking-wide
+      <p className="text-white/38 font-sans text-[10px] sm:text-xs md:text-sm leading-[1.55]
+                    max-w-none sm:max-w-[22ch] tracking-[0.02em]
                     opacity-60 translate-y-2
                     group-hover:opacity-100 group-hover:translate-y-0
                     transition-all duration-500 ease-out">
@@ -198,8 +195,8 @@ const TextCard = React.forwardRef(({ title, subtitle, desc, price, number, gridA
     </div>
 
     <div className="relative z-20 flex items-end justify-between">
-      <span className="font-serif text-amber-400 text-xl md:text-2xl tracking-wide">{price}</span>
-      <div className="flex items-center gap-2
+      <span className="font-serif text-amber-400 text-[1.45rem] sm:text-xl md:text-2xl tracking-wide">{price}</span>
+      <div className="hidden lg:flex items-center gap-2
                       opacity-0 translate-x-3
                       group-hover:opacity-100 group-hover:translate-x-0
                       transition-all duration-500 ease-out">
@@ -211,14 +208,11 @@ const TextCard = React.forwardRef(({ title, subtitle, desc, price, number, gridA
 ));
 
 /* ─── GRID DEFINITION ────────────────────────────────────────────────────── */
-/*
-  4 columns × 2 rows — each item uses CSS grid-area: "rowStart / colStart / rowEnd / colEnd"
-*/
 const GRID_ITEMS = [
   // ── COL 1: tall dish photo (spans both rows) ──
   {
     type: 'img',
-    gridArea: '1 / 1 / 3 / 2',
+    className: 'col-span-2 lg:col-span-1 lg:row-span-2 lg:col-start-1 lg:row-start-1',
     src: '/asset/ChatGPT Image May 6, 2026, 01_24_31 PM (1)-Photoroom.png',
     label: 'The Signature',
     tag: '01',
@@ -226,7 +220,7 @@ const GRID_ITEMS = [
   // ── COL 2 ROW 1: food dish ──
   {
     type: 'img',
-    gridArea: '1 / 2 / 2 / 3',
+    className: 'lg:col-span-1 lg:row-span-1 lg:col-start-2 lg:row-start-1',
     src: '/asset/ChatGPT Image May 6, 2026, 01_24_31 PM (2)-Photoroom.png',
     label: 'Wagyu Tomahawk',
     tag: '02',
@@ -234,7 +228,7 @@ const GRID_ITEMS = [
   // ── COL 2 ROW 2: TEXT CARD ──
   {
     type: 'text',
-    gridArea: '2 / 2 / 3 / 3',
+    className: 'lg:col-span-1 lg:row-span-1 lg:col-start-2 lg:row-start-2',
     title: 'TRUFFLE PASTA',
     subtitle: "Chef's Signature",
     desc: 'Handmade linguine, aged parmesan, and fresh black truffle shavings — timeless craft.',
@@ -244,7 +238,7 @@ const GRID_ITEMS = [
   // ── COL 3 ROW 1: TEXT CARD ──
   {
     type: 'text',
-    gridArea: '1 / 3 / 2 / 4',
+    className: 'lg:col-span-1 lg:row-span-1 lg:col-start-3 lg:row-start-1',
     title: 'WAGYU TOMAHAWK',
     subtitle: 'A5 Grade',
     desc: 'Dry-aged A5 Wagyu, smoked sea salt, rosemary infusion, and 24k gold leaf finishing.',
@@ -254,7 +248,7 @@ const GRID_ITEMS = [
   // ── COL 3 ROW 2: food dish ──
   {
     type: 'img',
-    gridArea: '2 / 3 / 3 / 4',
+    className: 'lg:col-span-1 lg:row-span-1 lg:col-start-3 lg:row-start-2',
     src: '/asset/ChatGPT Image May 6, 2026, 01_24_31 PM (3)-Photoroom.png',
     label: 'Gold Lobster',
     tag: '03',
@@ -262,7 +256,7 @@ const GRID_ITEMS = [
   // ── COL 4 ROW 1: food dish ──
   {
     type: 'img',
-    gridArea: '1 / 4 / 2 / 5',
+    className: 'lg:col-span-1 lg:row-span-1 lg:col-start-4 lg:row-start-1',
     src: '/asset/ChatGPT Image May 6, 2026, 01_25_36 PM (1)-Photoroom.png',
     label: 'Caviar Selection',
     tag: '04',
@@ -270,7 +264,7 @@ const GRID_ITEMS = [
   // ── COL 4 ROW 2: food dish ──
   {
     type: 'img',
-    gridArea: '2 / 4 / 3 / 5',
+    className: 'lg:col-span-1 lg:row-span-1 lg:col-start-4 lg:row-start-2',
     src: '/asset/ChatGPT Image May 5, 2026, 09_50_18 PM-Photoroom.png',
     label: 'The Platter',
     tag: '05',
@@ -286,12 +280,15 @@ const Ambiance = () => {
 
   /* attach tilt to all cards after mount */
   useEffect(() => {
-    cleanups.current = cardRefs.current.map((el) => attachTilt(el));
+    if (window.innerWidth >= 1024) {
+      cleanups.current = cardRefs.current.map((el) => attachTilt(el));
+    }
     return () => cleanups.current.forEach((fn) => fn && fn());
   }, []);
 
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
+      let mm = gsap.matchMedia();
 
       // title
       gsap.from(titleRef.current, {
@@ -319,12 +316,14 @@ const Ambiance = () => {
         );
       });
 
-      // parallax
-      gsap.utils.toArray('.gallery-parallax-wrapper').forEach((img) => {
-        gsap.to(img, {
-          y: '-7%',
-          ease: 'none',
-          scrollTrigger: { trigger: img, start: 'top bottom', end: 'bottom top', scrub: 2 },
+      // parallax - securely limited to desktop using matchMedia to prevent mobile bleed
+      mm.add("(min-width: 1024px)", () => {
+        gsap.utils.toArray('.gallery-parallax-wrapper').forEach((img) => {
+          gsap.to(img, {
+            y: '-7%',
+            ease: 'none',
+            scrollTrigger: { trigger: img, start: 'top bottom', end: 'bottom top', scrub: 2 },
+          });
         });
       });
 
@@ -368,14 +367,7 @@ const Ambiance = () => {
         </div>
 
         {/* ── GALLERY GRID ──────────────────────────────────────────────── */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gridTemplateRows: '340px 340px',
-            gap: '10px',
-          }}
-        >
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 auto-rows-[268px] sm:auto-rows-[280px] lg:grid-rows-[340px_340px] lg:auto-rows-[300px]">
           {GRID_ITEMS.map((item, i) => {
             const setRef = (el) => { cardRefs.current[i] = el; };
             if (item.type === 'img') {
@@ -386,7 +378,7 @@ const Ambiance = () => {
                   src={item.src}
                   label={item.label}
                   tag={item.tag}
-                  gridArea={item.gridArea}
+                  className={item.className}
                 />
               );
             }
@@ -399,7 +391,7 @@ const Ambiance = () => {
                 desc={item.desc}
                 price={item.price}
                 number={item.number}
-                gridArea={item.gridArea}
+                className={item.className}
               />
             );
           })}

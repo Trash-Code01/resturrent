@@ -28,14 +28,14 @@ const MENU = {
         name: 'Wagyu Tomahawk',
         desc: 'A5-style wagyu tomahawk with smoked sea salt, rosemary jus, roasted garlic, and gold-finished plating.',
         price: '$210',
-        img: '/asset/ChatGPT Image May 6, 2026, 01_25_36 PM (1)-Photoroom.png',
+        img: '/asset/our story/ChatGPT Image May 6, 2026, 05_35_50 PM-Photoroom.png',
       },
       {
         id: 3,
         name: 'Gold Leaf Lobster',
         desc: 'Butter-poached lobster tail with saffron cream, caviar, edible gold leaf, and citrus zest.',
         price: '$185',
-        img: '/asset/ChatGPT Image May 6, 2026, 01_25_36 PM (4)-Photoroom.png',
+        img: '/asset/our story/ChatGPT Image May 6, 2026, 05_52_41 PM (2)-Photoroom.png',
       },
     ],
   },
@@ -51,21 +51,21 @@ const MENU = {
         name: 'Black Cod Miso',
         desc: 'Charcoal-glazed black cod with bok choy, sesame, yuzu glaze, and spring onion.',
         price: '$145',
-        img: '/asset/ChatGPT Image May 6, 2026, 01_24_31 PM (1)-Photoroom.png',
+        img: '/asset/our story/ChatGPT Image May 6, 2026, 05_43_53 PM (3)-Photoroom.png',
       },
       {
         id: 5,
         name: "Duck Breast a l'Orange",
         desc: 'Crispy duck breast with orange glaze, citrus segments, thyme, and golden sauce pearls.',
         price: '$150',
-        img: '/asset/ChatGPT Image May 6, 2026, 01_24_31 PM (2)-Photoroom.png',
+        img: '/asset/ChatGPT Image May 6, 2026, 01_25_36 PM (3)-Photoroom.png',
       },
       {
         id: 6,
         name: 'Lamb Rack Royale',
         desc: 'Herb-crusted lamb rack with potato puree, red wine jus, rosemary salt, and micro herbs.',
         price: '$170',
-        img: '/asset/ChatGPT Image May 6, 2026, 01_24_31 PM (3)-Photoroom.png',
+        img: '/asset/ChatGPT Image May 6, 2026, 01_24_31 PM (1)-Photoroom.png',
       },
     ],
   },
@@ -81,21 +81,21 @@ const MENU = {
         name: 'Chocolate Gold Lava Cake',
         desc: 'Molten chocolate cake with vanilla ice cream, berries, cocoa dust, and edible gold.',
         price: '$65',
-        img: '/asset/ChatGPT Image May 6, 2026, 01_24_31 PM (4)-Photoroom.png',
+        img: '/asset/ChatGPT Image May 6, 2026, 01_24_31 PM (2)-Photoroom.png',
       },
       {
         id: 8,
         name: 'Pistachio Rose Mille-Feuille',
         desc: 'Crisp pastry layers with pistachio cream, rose petals, powdered sugar, and gold flakes.',
         price: '$58',
-        img: '/asset/ChatGPT Image May 6, 2026, 01_24_31 PM (5)-Photoroom.png',
+        img: '/asset/ChatGPT Image May 6, 2026, 01_24_31 PM (3)-Photoroom.png',
       },
       {
         id: 9,
         name: 'Vanilla Caviar Creme Brulee',
         desc: 'Vanilla bean creme brulee with caramelized sugar, golden pearls, and delicate sugar crystals.',
         price: '$55',
-        img: '/asset/ChatGPT Image May 6, 2026, 01_25_36 PM (2)-Photoroom.png',
+        img: '/asset/our story/ChatGPT Image May 6, 2026, 05_35_50 PM-Photoroom.png',
       },
     ],
   },
@@ -111,7 +111,7 @@ const MENU = {
         name: 'Obsidian Old Fashioned',
         desc: 'A smoky amber old fashioned with orange peel, crystal ice sphere, bitters, and gold-rimmed glass.',
         price: '$42',
-        img: '/asset/ChatGPT Image May 6, 2026, 01_25_36 PM (3)-Photoroom.png',
+        img: '/asset/ChatGPT Image May 6, 2026, 01_24_31 PM (5)-Photoroom.png',
       },
       {
         id: 11,
@@ -125,7 +125,7 @@ const MENU = {
         name: 'Golden Martini',
         desc: 'Clear golden martini with lemon twist, olive, chilled glass, and refined botanical notes.',
         price: '$40',
-        img: '/asset/ChatGPT Image May 6, 2026, 01_25_36 PM (1)-Photoroom.png',
+        img: '/asset/our story/ChatGPT Image May 8, 2026, 04_28_58 AM-Photoroom.png',
       },
     ],
   },
@@ -223,7 +223,7 @@ const SignatureCard = ({ item, index }) => {
           ref={imgRef}
           src={item.img}
           alt={item.name}
-          className="relative z-10 w-56 md:w-80 xl:w-96 h-auto object-contain drop-shadow-[0_40px_80px_rgba(0,0,0,0.9)] transition-transform duration-700 group-hover:scale-105"
+          className="relative z-10 w-56 md:w-80 xl:w-96 h-auto object-contain drop-shadow-[0_40px_80px_rgba(0,0,0,0.9)]"
         />
       </div>
 
@@ -242,8 +242,17 @@ const SignatureCard = ({ item, index }) => {
         </p>
         <div className="flex items-center justify-between md:justify-start gap-4 md:gap-6">
           <span className="font-serif text-gold-400 text-xl md:text-2xl tracking-wide">{item.price}</span>
-          <button className="group/btn relative px-6 md:px-8 py-3 border border-white/15 text-white text-[9px] uppercase tracking-[0.4em] overflow-hidden transition-all duration-500 hover:border-gold-500/50">
-            <span className="relative z-10">Order Dish</span>
+          <button 
+            onClick={(e) => {
+              e.preventDefault();
+              setTimeout(() => {
+                window.scrollTo({ top: 0, behavior: 'auto' });
+                window.location.href = '/reservations';
+              }, 300);
+            }}
+            className="group/btn relative px-6 md:px-8 py-3 border border-white/15 text-white text-[9px] uppercase tracking-[0.4em] overflow-hidden transition-all duration-500 hover:border-gold-500/50"
+          >
+            <span className="relative z-10">Reserve Now</span>
             <div className="absolute inset-0 bg-gold-950/70 scale-x-0 group-hover/btn:scale-x-100 origin-left transition-transform duration-600 ease-out" />
           </button>
         </div>
@@ -321,68 +330,147 @@ const MenuRow = ({ item, index }) => {
   );
 };
 
-const MobileSignatureCard = ({ item, index }) => (
-  <article className="min-w-[84vw] max-w-[84vw] snap-center rounded-[30px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] p-5 shadow-[0_30px_70px_rgba(0,0,0,0.45)]">
-    <div className="flex items-start justify-between gap-4 mb-4">
-      <div>
-        <span className="inline-flex items-center rounded-full border border-gold-500/20 bg-gold-500/10 px-3 py-1 text-[9px] uppercase tracking-[0.35em] text-gold-400">
-          {String(index + 1).padStart(2, '0')} Signature
-        </span>
-        <h3 className="mt-4 font-serif text-white text-[1.85rem] leading-[0.95] uppercase tracking-tight">
+const MobileSignatureFeature = ({ item, index }) => (
+  <article className="relative flex flex-col items-center gap-7">
+    <div className="absolute right-0 top-[18%] select-none font-serif text-[4.8rem] leading-none text-white/[0.035] pointer-events-none">
+      {String(index + 1).padStart(2, '0')}
+    </div>
+
+    <div className="relative w-full px-4">
+      <div className="relative mx-auto flex aspect-square max-w-[280px] items-center justify-center">
+        <div
+          className="absolute left-1/2 top-1/2 h-[10rem] w-[10rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold-400/6 blur-[60px]"
+        />
+        <div className="relative z-10 h-full w-full p-4">
+          <img
+            src={item.img}
+            alt={item.name}
+            className="h-full w-full object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.95)]"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div className="relative z-10 w-full px-6 text-center">
+      <div className="mb-6 inline-flex w-full items-center justify-center gap-4">
+        <div className="h-px w-8 bg-gold-500/40" />
+        <p className="font-serif text-xl italic tracking-wide text-gold-500">{item.price}</p>
+      </div>
+
+      <h3 className="mb-6 font-serif text-3xl font-medium leading-[1.08] tracking-tight text-white">
+        {item.name}
+      </h3>
+
+      <p className="mx-auto mb-8 max-w-sm font-sans text-base font-light leading-relaxed tracking-wide text-white/80">
+        {item.desc}
+      </p>
+
+      <button className="hidden group relative overflow-hidden border border-white/20 px-10 py-4 text-center text-[10px] font-light uppercase tracking-[0.3em] text-white transition-all duration-700 hover:border-gold-500/50">
+        <span className="relative z-10 transition-colors duration-500 group-hover:text-white">Discover Dish</span>
+        <div className="absolute inset-0 origin-left scale-x-0 bg-gold-950/80 transition-transform duration-700 ease-out group-hover:scale-x-100" />
+        <div className="absolute bottom-0 left-0 h-[1px] w-full bg-gold-500/30" />
+      </button>
+    </div>
+  </article>
+);
+
+const MobileGalleryMenuRow = ({ item, index, sectionLabel }) => {
+  const isReversed = index % 2 !== 0;
+
+  const imagePanel = (
+    <div className="relative h-full min-h-[220px] overflow-hidden border border-white/[0.06] bg-black">
+      <div
+        className="absolute inset-0 opacity-90"
+        style={{ background: 'radial-gradient(circle at 50% 38%, rgba(212,175,55,0.1) 0%, transparent 62%)' }}
+      />
+      <span className="absolute right-3 top-3 font-serif text-[11px] italic tracking-[0.3em] text-white/18">
+        {String(index + 1).padStart(2, '0')}
+      </span>
+      <div className="absolute inset-0 flex items-center justify-center p-3">
+        <img
+          src={item.img}
+          alt={item.name}
+          className="h-full w-full object-contain drop-shadow-[0_24px_38px_rgba(0,0,0,0.92)]"
+        />
+      </div>
+      <div className="absolute bottom-0 left-0 right-0 p-3.5">
+        <div className="mb-3 h-px w-8 bg-gold-500/35" />
+        <p
+          className="font-serif text-[0.82rem] uppercase leading-none tracking-[0.1em] text-white"
+          style={{
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
+          }}
+        >
+          {item.name}
+        </p>
+      </div>
+    </div>
+  );
+
+  const detailPanel = (
+    <div
+      className="relative flex h-full min-h-[220px] flex-col justify-between border p-3.5"
+      style={{
+        background: 'linear-gradient(140deg, #131210 0%, #0c0c0a 100%)',
+        borderColor: 'rgba(212,175,55,0.10)',
+      }}
+    >
+      <div
+        className="absolute right-2 bottom-1 font-serif text-[4.4rem] leading-none pointer-events-none"
+        style={{ color: 'rgba(255,255,255,0.03)' }}
+      >
+        {String(index + 1).padStart(2, '0')}
+      </div>
+
+      <div className="relative z-10">
+        <div className="mb-3 flex items-center gap-3">
+          <div className="h-px w-5 bg-gold-500/45" />
+          <span className="font-serif text-[8px] italic uppercase tracking-[0.24em] text-gold-400/65">
+            {sectionLabel} Selection
+          </span>
+        </div>
+
+        <h3
+          className="font-serif text-[1.22rem] uppercase leading-[0.9] tracking-tight text-white"
+          style={{
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
+          }}
+        >
           {item.name}
         </h3>
+
+        <p
+          className="mt-3 text-[10px] leading-[1.65] tracking-[0.02em] text-white/42"
+          style={{
+            display: '-webkit-box',
+            WebkitLineClamp: 4,
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
+          }}
+        >
+          {item.desc}
+        </p>
       </div>
-      <span className="font-serif text-gold-400 text-lg tracking-wide">{item.price}</span>
-    </div>
 
-    <div className="relative overflow-hidden rounded-[24px] border border-white/8 bg-black/70 px-4 py-5">
-      <div
-        className="absolute inset-0 opacity-80"
-        style={{ background: 'radial-gradient(circle at top, rgba(212, 175, 55, 0.12), transparent 60%)' }}
-      />
-      <img
-        src={item.img}
-        alt={item.name}
-        className="relative z-10 mx-auto h-48 w-full object-contain drop-shadow-[0_35px_50px_rgba(0,0,0,0.8)]"
-      />
-    </div>
-
-    <p className="mt-5 text-sm leading-7 tracking-wide text-white/60">{item.desc}</p>
-
-    <button className="mt-6 flex w-full items-center justify-center rounded-full border border-gold-500/30 bg-gold-500/10 px-5 py-3 text-[10px] uppercase tracking-[0.35em] text-gold-400 transition-colors duration-300 hover:border-gold-500 hover:bg-gold-500 hover:text-black">
-      Order Dish
-    </button>
-  </article>
-);
-
-const MobileMenuCard = ({ item, index, category }) => (
-  <article className="min-w-[79vw] max-w-[79vw] snap-center rounded-[28px] border border-white/10 bg-[#050505]/95 p-4 shadow-[0_24px_60px_rgba(0,0,0,0.4)]">
-    <div className="rounded-[22px] border border-white/6 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.12),transparent_60%)] p-4">
-      <img
-        src={item.img}
-        alt={item.name}
-        className="mx-auto h-40 w-full object-contain drop-shadow-[0_24px_30px_rgba(0,0,0,0.8)]"
-      />
-    </div>
-
-    <div className="mt-4 flex items-center justify-between gap-3">
-      <div className="flex items-center gap-2">
-        <span className="text-[9px] uppercase tracking-[0.35em] text-white/30">{String(index + 1).padStart(2, '0')}</span>
-        <span className="rounded-full border border-white/8 px-2.5 py-1 text-[8px] uppercase tracking-[0.32em] text-gold-400/80">
-          {MENU[category].shortLabel}
-        </span>
+      <div className="relative z-10">
+        <span className="font-serif text-[1.7rem] tracking-wide text-gold-400">{item.price}</span>
       </div>
-      <span className="font-serif text-gold-400 text-lg">{item.price}</span>
     </div>
+  );
 
-    <h3 className="mt-4 font-serif text-white text-[1.35rem] uppercase leading-tight tracking-wide">{item.name}</h3>
-    <p className="mt-3 text-[13px] leading-6 tracking-wide text-white/55">{item.desc}</p>
-
-    <button className="mt-5 inline-flex items-center rounded-full border border-white/10 px-4 py-2.5 text-[9px] uppercase tracking-[0.35em] text-white/70">
-      View Notes
-    </button>
-  </article>
-);
+  return (
+    <article className="grid grid-cols-2 items-stretch gap-3">
+      <div className={isReversed ? 'order-2' : 'order-1'}>{imagePanel}</div>
+      <div className={isReversed ? 'order-1' : 'order-2'}>{detailPanel}</div>
+    </article>
+  );
+};
 
 const MenuSection = ({ category }) => {
   const data = MENU[category];
@@ -409,19 +497,35 @@ const MenuSection = ({ category }) => {
   return (
     <section id={`menu-${category}`} className="relative w-full scroll-mt-40 overflow-hidden py-16 md:scroll-mt-36 md:py-36">
       <div ref={titleRef} className="container mx-auto px-6 lg:px-16">
-        <div className="md:hidden rounded-[28px] border border-white/8 bg-white/[0.03] p-5 shadow-[0_20px_40px_rgba(0,0,0,0.35)]">
-          <div className="flex items-center justify-between gap-4">
+        {isSignatures ? (
+          <div className="md:hidden max-w-[320px] text-left">
             <div className="flex items-center gap-3">
               <div className="h-px w-8 bg-gold-500/50" />
-              <span className="text-gold-500/70 font-serif italic text-[10px] tracking-[0.4em] uppercase">{data.number}</span>
+              <span className="font-serif text-[10px] italic uppercase tracking-[0.4em] text-gold-500/70">{data.number}</span>
+              <div className="h-px w-8 bg-gold-500/25" />
             </div>
-            <span className="text-[9px] uppercase tracking-[0.35em] text-white/25">Swipe to browse</span>
+            <h2 className="mt-5 font-serif text-[2.45rem] uppercase leading-[0.92] tracking-tight text-white">
+              <span className="block">Chef&apos;s</span>
+              <span className="mt-1 block font-light italic text-gold-400">Signatures</span>
+            </h2>
+            <p className="mt-5 max-w-[25ch] text-[13px] leading-7 tracking-wide text-white/50">
+              {data.subtitle}
+            </p>
           </div>
-          <h2 className="mt-5 font-serif text-white text-[2.35rem] uppercase leading-[0.92] tracking-tight">
-            {data.label}
-          </h2>
-          <p className="mt-4 text-sm leading-7 tracking-wide text-white/55">{data.subtitle}</p>
-        </div>
+        ) : (
+          <div className="md:hidden max-w-[320px] text-left">
+            <div className="flex items-center gap-3">
+              <div className="h-px w-8 bg-gold-500/50" />
+              <span className="font-serif text-[10px] italic uppercase tracking-[0.4em] text-gold-500/70">{data.number}</span>
+            </div>
+            <h2 className="mt-4 font-serif text-[2.45rem] uppercase leading-[0.92] tracking-tight text-white">
+              {data.label}
+            </h2>
+            <p className="mt-4 max-w-[26ch] text-[13px] leading-7 tracking-wide text-white/50">
+              {data.subtitle}
+            </p>
+          </div>
+        )}
 
         <div className="hidden md:block mb-12 md:mb-24">
           <div className="flex items-center gap-4 mb-4 md:mb-5">
@@ -431,9 +535,7 @@ const MenuSection = ({ category }) => {
             </span>
           </div>
           <div className="relative">
-            <span className="absolute -top-8 -left-4 font-serif text-[6rem] md:text-[10rem] leading-none text-white/[0.03] select-none pointer-events-none block">
-              {data.number}
-            </span>
+
             <h2 className="font-serif text-white uppercase text-3xl sm:text-4xl md:text-6xl xl:text-8xl tracking-tight leading-none mb-3 md:mb-4 relative z-10 pt-4 md:pt-0 break-words w-full">
               {data.label}
             </h2>
@@ -451,23 +553,28 @@ const MenuSection = ({ category }) => {
         />
       </div>
 
-      <div className="md:hidden mt-6">
-        <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-2 no-scrollbar">
-          {data.items.map((item, index) =>
-            isSignatures ? (
-              <MobileSignatureCard key={item.id} item={item} index={index} />
-            ) : (
-              <MobileMenuCard key={item.id} item={item} index={index} category={category} />
-            ),
-          )}
-        </div>
-        <div className="px-6 pt-4">
-          <div className="flex items-center justify-between rounded-full border border-white/6 bg-white/[0.02] px-4 py-3">
-            <span className="text-[9px] uppercase tracking-[0.35em] text-white/30">Curated for mobile</span>
-            <span className="text-[9px] uppercase tracking-[0.35em] text-gold-400/70">{data.items.length} picks</span>
+      {isSignatures ? (
+        <div className="md:hidden container mx-auto mt-10 px-6">
+          <div className="flex flex-col gap-16">
+            {data.items.map((item, index) => (
+              <MobileSignatureFeature key={item.id} item={item} index={index} />
+            ))}
           </div>
         </div>
-      </div>
+      ) : (
+        <div className="md:hidden container mx-auto mt-8 px-6">
+          <div className="flex flex-col gap-3">
+            {data.items.map((item, index) => (
+              <MobileGalleryMenuRow
+                key={item.id}
+                item={item}
+                index={index}
+                sectionLabel={data.label}
+              />
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className="hidden md:block container mx-auto px-6 lg:px-16">
         {isSignatures ? (
@@ -820,7 +927,7 @@ const Menu = () => {
                 window.location.href = '/reservations';
               }, 300);
             }}
-            className="group relative w-full max-w-sm overflow-hidden border border-[#d4af37]/50 bg-black/30 px-8 py-4 text-[10px] font-bold uppercase tracking-[0.28em] text-[#d4af37] backdrop-blur-md transition-all duration-700 hover:border-[#d4af37] hover:shadow-[0_0_40px_rgba(212,175,55,0.2)] active:scale-[0.95] md:w-auto md:px-14 md:py-5 md:text-xs md:tracking-[0.3em]"
+            className="group relative w-[80%] max-w-[280px] overflow-hidden border border-[#d4af37]/50 bg-black/30 px-6 py-3.5 text-[9px] font-bold uppercase tracking-[0.28em] text-[#d4af37] backdrop-blur-md transition-all duration-700 hover:border-[#d4af37] hover:shadow-[0_0_40px_rgba(212,175,55,0.2)] active:scale-[0.95] md:w-auto md:max-w-none md:px-14 md:py-5 md:text-xs md:tracking-[0.3em]"
           >
             <span className="relative z-10 transition-colors duration-500 group-hover:text-black">Book Your Evening</span>
             <div className="absolute inset-0 origin-bottom scale-y-0 bg-[#d4af37] transition-transform duration-700 ease-out group-hover:scale-y-100" />

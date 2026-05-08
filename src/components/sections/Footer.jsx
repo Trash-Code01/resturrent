@@ -151,8 +151,8 @@ const Footer = () => {
       </div>
 
       <div className="container relative z-10 mx-auto px-5 sm:px-6 lg:px-16">
-        <div className="mb-14 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 md:mb-24 md:gap-10 lg:grid-cols-4 lg:gap-12">
-          <div className="footer-anim rounded-[26px] border border-white/[0.06] bg-white/[0.02] p-6 sm:col-span-2 md:p-7 lg:col-span-1 lg:border-0 lg:bg-transparent lg:p-0">
+        <div className="mb-14 lg:grid lg:grid-cols-4 lg:gap-12 md:mb-24">
+          <div className="footer-anim pb-8 md:pb-10 lg:col-span-1 lg:pb-0">
             <h2 className="mb-4 font-serif text-[2rem] uppercase tracking-[0.18em] text-white md:mb-6 md:text-3xl">
               OBSIDIAN
             </h2>
@@ -178,49 +178,51 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="footer-anim rounded-[26px] border border-white/[0.06] bg-white/[0.02] p-6 md:p-7 lg:border-0 lg:bg-transparent lg:p-0">
-            <FooterSectionHeading title="Explore" />
-            <ul className="space-y-3 md:space-y-4">
-              {EXPLORE_LINKS.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    to={link.to}
-                    onClick={() => window.scrollTo({ top: 0, behavior: 'auto' })}
-                    className="group inline-flex items-center text-[14px] tracking-wide text-white/50 transition-colors duration-300 hover:text-white md:text-sm"
-                  >
-                    <span className="mr-0 h-px w-0 bg-gold-400 transition-all duration-300 group-hover:mr-3 group-hover:w-4"></span>
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <div className="grid grid-cols-2 gap-x-8 gap-y-10 border-t border-white/10 pt-8 md:grid-cols-3 md:gap-x-10 md:gap-y-12 md:pt-10 lg:col-span-3 lg:border-t-0 lg:pt-0 lg:pl-8">
+            <div className="footer-anim col-span-1">
+              <FooterSectionHeading title="Explore" />
+              <ul className="space-y-3 md:space-y-4">
+                {EXPLORE_LINKS.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      to={link.to}
+                      onClick={() => window.scrollTo({ top: 0, behavior: 'auto' })}
+                      className="group inline-flex items-center text-[14px] tracking-wide text-white/50 transition-colors duration-300 hover:text-white md:text-sm"
+                    >
+                      <span className="mr-0 h-px w-0 bg-gold-400 transition-all duration-300 group-hover:mr-3 group-hover:w-4"></span>
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          <div className="footer-anim rounded-[26px] border border-white/[0.06] bg-white/[0.02] p-6 md:p-7 lg:border-0 lg:bg-transparent lg:p-0">
-            <FooterSectionHeading title="Contact" />
-            <ul className="space-y-3 text-[14px] tracking-wide text-white/50 md:space-y-4 md:text-sm">
-              {CONTACT_LINKS.map((link) => (
-                <li key={link.label}>
-                  <a href={link.href} className="break-all transition-colors duration-300 hover:text-white sm:break-normal">
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+            <div className="footer-anim col-span-1">
+              <FooterSectionHeading title="Contact" />
+              <ul className="space-y-3 text-[13px] tracking-wide text-white/50 md:space-y-4 md:text-sm">
+                {CONTACT_LINKS.map((link) => (
+                  <li key={link.label}>
+                    <a href={link.href} className="break-words transition-colors duration-300 hover:text-white sm:break-normal">
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          <div className="footer-anim rounded-[26px] border border-white/[0.06] bg-white/[0.02] p-6 md:p-7 lg:border-0 lg:bg-transparent lg:p-0">
-            <FooterSectionHeading title="Visit" />
-            <ul className="space-y-3 text-[14px] tracking-wide text-white/50 md:space-y-4 md:text-sm">
-              <li className="leading-7">
-                125 West 55th Street
-                <br />
-                New York, NY 10019
-              </li>
-              <li className="pt-1 text-xs text-white/30 md:pt-2">Mon-Wed: 5pm - 11pm</li>
-              <li className="text-xs text-white/30">Thu-Sat: 5pm - 1am</li>
-              <li className="mt-1 text-xs italic text-gold-500/40 md:mt-2">Sun: Closed</li>
-            </ul>
+            <div className="footer-anim col-span-2 md:col-span-1">
+              <FooterSectionHeading title="Visit" />
+              <ul className="space-y-3 text-[13px] tracking-wide text-white/50 md:space-y-4 md:text-sm">
+                <li className="leading-7">
+                  125 West 55th Street
+                  <br />
+                  New York, NY 10019
+                </li>
+                <li className="pt-1 text-xs text-white/30 md:pt-2">Mon-Wed: 5pm - 11pm</li>
+                <li className="text-xs text-white/30">Thu-Sat: 5pm - 1am</li>
+                <li className="mt-1 text-xs italic text-gold-500/40 md:mt-2">Sun: Closed</li>
+              </ul>
+            </div>
           </div>
         </div>
 

@@ -11,6 +11,15 @@ const SmoothScroll = ({ children }) => {
   const reqIdRef = useRef(null);
 
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
+    const hasCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
+
+    if (prefersReducedMotion || hasCoarsePointer) {
+      return undefined;
+    }
+
     const lenisInstance = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),

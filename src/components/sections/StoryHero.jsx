@@ -19,8 +19,8 @@ const StoryHero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/90" />
       </div>
 
-      <div className="container relative z-10 mx-auto px-5 pt-24 sm:px-6 md:px-16">
-        <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
+      <div className="container relative z-10 mx-auto px-5 pt-24 sm:px-6 md:px-12 lg:px-16">
+        <div className="mx-auto flex w-full max-w-[1400px] flex-col items-center text-center">
           <div className="mb-2 overflow-hidden">
             <motion.h3
               initial={{ opacity: 0, y: 30, filter: 'blur(5px)' }}
@@ -32,8 +32,8 @@ const StoryHero = () => {
             </motion.h3>
           </div>
 
-          <div className="mb-7 flex w-full justify-center md:mb-8">
-            <h1 className="flex flex-wrap items-center justify-center font-serif text-[3.25rem] font-light leading-[0.88] tracking-[0.12em] text-white sm:text-[4.5rem] md:text-[8rem] lg:text-[9rem] xl:text-[10rem]">
+          <div className="mb-7 flex w-full justify-center overflow-visible md:mb-8">
+            <h1 className="flex flex-nowrap items-center justify-center whitespace-nowrap font-serif text-[clamp(3.35rem,13vw,11.2rem)] font-light leading-[0.88] tracking-[0.08em] text-white sm:tracking-[0.1em] md:tracking-[0.11em]">
               {'OBSIDIAN'.split('').map((char, index) => (
                 <motion.span
                   key={index}
@@ -44,7 +44,7 @@ const StoryHero = () => {
                     delay: 0.4 + index * 0.1,
                     ease: [0.16, 1, 0.3, 1],
                   }}
-                  className="inline-block"
+                  className="inline-block shrink-0"
                 >
                   {char}
                 </motion.span>
@@ -92,25 +92,25 @@ const StoryHero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 4.5, ease: 'easeOut' }}
-            className="flex w-full max-w-md flex-col justify-center gap-4 sm:max-w-none sm:flex-row sm:gap-6"
+            className="flex w-full max-w-md flex-col items-center justify-center gap-4 sm:max-w-none sm:flex-row sm:gap-6"
           >
             <Link
               to="/reservations"
               onClick={() => window.scrollTo({ top: 0, behavior: 'auto' })}
-              className="group relative flex items-center justify-center overflow-hidden px-8 py-4 transition-all duration-500 hover:scale-[1.02] active:scale-[0.98]"
+              className="group relative flex w-[85%] sm:w-auto items-center justify-center overflow-hidden px-6 py-3.5 sm:px-8 sm:py-4 transition-all duration-500 hover:scale-[1.02] active:scale-[0.98]"
               style={{ backgroundColor: '#c69c3a' }}
             >
               <div className="absolute inset-0 origin-center scale-x-0 bg-white/20 transition-transform duration-500 ease-out group-hover:scale-x-100" />
-              <span className="relative z-10 text-xs font-semibold uppercase tracking-[0.2em] text-black">Reserve A Table</span>
+              <span className="relative z-10 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-black">Reserve A Table</span>
             </Link>
 
             <Link
               to="/menu"
               onClick={() => window.scrollTo({ top: 0, behavior: 'auto' })}
-              className="group relative flex items-center justify-center overflow-hidden border border-white/30 px-8 py-4 transition-all duration-500 hover:scale-[1.02] hover:border-white/60 active:scale-[0.98]"
+              className="group relative flex w-[85%] sm:w-auto items-center justify-center overflow-hidden border border-white/30 px-6 py-3.5 sm:px-8 sm:py-4 transition-all duration-500 hover:scale-[1.02] hover:border-white/60 active:scale-[0.98]"
             >
               <div className="absolute inset-0 origin-center scale-x-0 bg-white/5 transition-transform duration-500 ease-out group-hover:scale-x-100" />
-              <span className="relative z-10 text-xs uppercase tracking-[0.2em] text-white transition-colors duration-500">Explore Menu</span>
+              <span className="relative z-10 text-[10px] sm:text-xs uppercase tracking-[0.2em] text-white transition-colors duration-500">Explore Menu</span>
             </Link>
           </motion.div>
         </div>

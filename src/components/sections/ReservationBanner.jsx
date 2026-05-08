@@ -146,7 +146,7 @@ const ReservationBanner = () => {
         </div>
 
         {/* Right Side: Oversized CTA */}
-        <div className="rs-fade-up w-full lg:w-auto flex justify-start lg:justify-end">
+        <div className="rs-fade-up w-full lg:w-auto flex justify-center lg:justify-end">
             <button 
               onClick={(e) => {
                 e.preventDefault();

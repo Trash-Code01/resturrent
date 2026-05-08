@@ -123,7 +123,7 @@ const MenuPreview = () => {
 
           {/* Explore CTA */}
           <div className="mt-16 inline-flex">
-             <Link to="/menu" onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}>
+             <button onClick={() => window.location.href = `/menu#menu-${activeTab.toLowerCase()}`}>
                <motion.div 
                   onMouseDown={() => setIsCtaPressed(true)}
                   onMouseUp={() => setIsCtaPressed(false)}
@@ -136,7 +136,7 @@ const MenuPreview = () => {
                   <span className="relative z-10 group-hover:text-black transition-colors duration-500">Explore Full Menu</span>
                   <div className="absolute inset-0 bg-[#d4af37] scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-500 ease-out" />
                </motion.div>
-             </Link>
+             </button>
           </div>
 
         </div>

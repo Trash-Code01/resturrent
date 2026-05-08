@@ -117,13 +117,13 @@ const StoryJourney = () => {
          if (!pos) return null;
          const yVal = parallaxValues[idx % parallaxValues.length];
          return (
-           <motion.div 
+           <motion.div
              key={`outer-${idx}`}
              className="absolute pointer-events-none z-10"
-             style={{ 
-               top: pos.top, 
+             style={{
+               top: pos.top,
                bottom: pos.bottom,
-               left: pos.left, 
+               left: pos.left,
                right: pos.right,
                width: pos.width,
                y: yVal
@@ -132,12 +132,12 @@ const StoryJourney = () => {
              <motion.div
                initial={{ opacity: 0, scale: 0.8 }}
                whileInView={{ opacity: 0.85, scale: 1 }}
-               animate={{ 
+               animate={{
                  y: [0, -20, 0],
                  rotate: [pos.rotate, pos.rotate + 10, pos.rotate]
                }}
-               transition={{ 
-                 duration: 4 + (idx % 3), 
+               transition={{
+                 duration: 4 + (idx % 3),
                  repeat: Infinity,
                  repeatType: "reverse",
                  ease: "easeInOut",

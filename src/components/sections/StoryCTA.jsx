@@ -40,10 +40,10 @@ const StoryCTA = () => {
           <Link
             to="/reservations"
             onClick={() => window.scrollTo({ top: 0, behavior: 'auto' })}
-            className="group relative flex w-full max-w-sm items-center justify-center overflow-hidden border border-[#d4af37]/50 bg-[#050505]/50 px-8 py-4 backdrop-blur-sm transition-all duration-700 hover:border-[#d4af37] hover:shadow-[0_0_30px_rgba(212,175,55,0.2)] active:scale-[0.95] md:w-auto md:px-14 md:py-5"
+            className="group relative flex w-[85%] max-w-[280px] items-center justify-center overflow-hidden border border-[#d4af37]/50 bg-[#050505]/50 px-6 py-3.5 backdrop-blur-sm transition-all duration-700 hover:border-[#d4af37] hover:shadow-[0_0_30px_rgba(212,175,55,0.2)] active:scale-[0.95] md:w-auto md:max-w-none md:px-14 md:py-5"
           >
             <div className="absolute inset-0 origin-bottom scale-y-0 bg-[#d4af37] transition-transform duration-500 ease-out group-hover:scale-y-100" />
-            <span className="relative z-10 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#d4af37] transition-colors duration-500 group-hover:text-black md:text-[13px]">
+            <span className="relative z-10 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#d4af37] transition-colors duration-500 group-hover:text-black md:text-[13px]">
               Reserve A Table
             </span>
           </Link>
