@@ -1,8 +1,9 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { useAuth } from '@clerk/react';
 import clsx from 'clsx';
+import { useNavigate } from 'react-router-dom';
 import Footer from '../components/sections/Footer';
-import { createSupabaseAuthedClient } from '../lib/supabase';
+import { clearAdminSession } from '../lib/adminSession';
+import { createSupabasePublicClient } from '../lib/supabase';
 import {
   fetchAdminContacts,
   fetchAdminReservations,
@@ -56,6 +57,22 @@ const contactPriority = {
   in_progress: 1,
   resolved: 2,
 };
+
+function getAdminWorkspaceErrorMessage(error) {
+  const message = error?.message || 'Unable to load the back-office data.';
+  const normalizedMessage = message.toLowerCase();
+
+  if (
+    normalizedMessage.includes('row-level security') ||
+    normalizedMessage.includes('jwt') ||
+    normalizedMessage.includes('token') ||
+    normalizedMessage.includes('claim')
+  ) {
+    return 'Back-office access is now separate from Clerk, but the current Supabase admin policies still expect the older Clerk-based token flow. The route is fixed, but the database policy or server-side admin API still needs to be updated before live admin data can load.';
+  }
+
+  return message;
+}
 
 function getReservationTimestamp(reservation) {
   return new Date(
@@ -159,7 +176,7 @@ const InfoRow = ({ label, value, tone = 'text-white/82' }) => (
 );
 
 const AdminPanel = () => {
-  const { getToken } = useAuth();
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('reservations');
   const [reservations, setReservations] = useState([]);
   const [contacts, setContacts] = useState([]);
@@ -175,7 +192,7 @@ const AdminPanel = () => {
     async function loadAdminData() {
       try {
         setError('');
-        const client = createSupabaseAuthedClient(getToken);
+        const client = createSupabasePublicClient();
         const [reservationData, contactData] = await Promise.all([
           fetchAdminReservations(client),
           fetchAdminContacts(client),
@@ -207,7 +224,7 @@ const AdminPanel = () => {
         );
       } catch (loadError) {
         if (isMounted) {
-          setError(loadError.message);
+          setError(getAdminWorkspaceErrorMessage(loadError));
         }
       } finally {
         if (isMounted) {
@@ -221,7 +238,7 @@ const AdminPanel = () => {
     return () => {
       isMounted = false;
     };
-  }, [getToken]);
+  }, []);
 
   const metrics = useMemo(() => {
     const today = new Date().toISOString().split('T')[0];
@@ -275,7 +292,7 @@ const AdminPanel = () => {
   async function saveReservation(reservationId) {
     try {
       setSavingId(reservationId);
-      const client = createSupabaseAuthedClient(getToken);
+      const client = createSupabasePublicClient();
       const updatedReservation = await updateReservationManagement(
         client,
         reservationId,
@@ -288,7 +305,7 @@ const AdminPanel = () => {
         ),
       );
     } catch (saveError) {
-      setError(saveError.message);
+      setError(getAdminWorkspaceErrorMessage(saveError));
     } finally {
       setSavingId('');
     }
@@ -297,7 +314,7 @@ const AdminPanel = () => {
   async function saveContact(contactId) {
     try {
       setSavingId(contactId);
-      const client = createSupabaseAuthedClient(getToken);
+      const client = createSupabasePublicClient();
       const updatedContact = await updateContactStatus(
         client,
         contactId,
@@ -310,10 +327,15 @@ const AdminPanel = () => {
         ),
       );
     } catch (saveError) {
-      setError(saveError.message);
+      setError(getAdminWorkspaceErrorMessage(saveError));
     } finally {
       setSavingId('');
     }
+  }
+
+  function handleExitBackOffice() {
+    clearAdminSession();
+    navigate('/backoffice/access', { replace: true });
   }
 
   return (
@@ -424,6 +446,13 @@ const AdminPanel = () => {
                     </button>
                   );
                 })}
+                <button
+                  type="button"
+                  onClick={handleExitBackOffice}
+                  className="inline-flex items-center gap-3 rounded-full border border-white/10 px-5 py-3 text-[10px] uppercase tracking-[0.3em] text-white/52 transition-colors duration-300 hover:border-white/20 hover:text-white"
+                >
+                  Exit Back Office
+                </button>
               </div>
             </Shell>
           </div>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" fill="#030303" />
+  <circle cx="50" cy="50" r="35" fill="none" stroke="#d4af37" stroke-width="4" />
+  <circle cx="50" cy="50" r="28" fill="none" stroke="#d4af37" stroke-width="1" stroke-dasharray="2 4" />
+  <path d="M 50 20 A 30 30 0 0 1 80 50" fill="none" stroke="#ffffff" stroke-width="2" />
+  <text x="50" y="55" font-family="serif" font-size="28" font-weight="bold" fill="#d4af37" text-anchor="middle" letter-spacing="2">O</text>
+</svg>

@@ -4,6 +4,10 @@ export const CLERK_PUBLISHABLE_KEY =
 export const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL ?? '';
 export const SUPABASE_ANON_KEY =
   import.meta.env.VITE_SUPABASE_ANON_KEY ?? '';
+export const ADMIN_PANEL_EMAIL =
+  import.meta.env.VITE_ADMIN_PANEL_EMAIL ?? '';
+export const ADMIN_PANEL_PASSWORD =
+  import.meta.env.VITE_ADMIN_PANEL_PASSWORD ?? '';
 
 export const CLERK_SUPABASE_JWT_TEMPLATE =
   import.meta.env.VITE_CLERK_SUPABASE_JWT_TEMPLATE ?? '';
@@ -11,6 +15,8 @@ export const CLERK_SUPABASE_JWT_TEMPLATE =
 export const isClerkConfigured = CLERK_PUBLISHABLE_KEY.length > 0;
 export const isSupabaseConfigured =
   SUPABASE_URL.length > 0 && SUPABASE_ANON_KEY.length > 0;
+export const isAdminPanelConfigured =
+  ADMIN_PANEL_EMAIL.trim().length > 0 && ADMIN_PANEL_PASSWORD.length > 0;
 export const isClerkSupabaseJwtTemplateConfigured =
   CLERK_SUPABASE_JWT_TEMPLATE.trim().length > 0;
 

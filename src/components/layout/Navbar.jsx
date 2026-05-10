@@ -258,9 +258,14 @@ const Navbar = () => {
           <Link
             to="/"
             onClick={go}
-            className="relative z-10 py-2 font-serif text-2xl uppercase tracking-widest text-white transition-colors duration-300 hover:text-[#d4af37] md:text-3xl"
+            className="group relative z-10 flex flex-col items-start py-1"
           >
-            OBSIDIAN
+            <span className="font-serif text-2xl uppercase tracking-widest text-white transition-colors duration-300 group-hover:text-[#d4af37] md:text-3xl">
+              OBSIDIAN
+            </span>
+            <span className="hidden text-[8px] uppercase tracking-[0.3em] text-[#d4af37]/70 transition-colors duration-300 group-hover:text-[#d4af37] md:block mt-0.5">
+              Modern Culinary Elegance
+            </span>
           </Link>
 
           <ul className="hidden items-center gap-8 md:flex">

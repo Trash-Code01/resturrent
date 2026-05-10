@@ -39,11 +39,9 @@ function App() {
               <Route
                 path={ADMIN_PANEL_ROUTE}
                 element={
-                  <ProtectedRoute signInPath={ADMIN_ACCESS_ROUTE}>
-                    <AdminRoute>
-                      <AdminPanel />
-                    </AdminRoute>
-                  </ProtectedRoute>
+                  <AdminRoute>
+                    <AdminPanel />
+                  </AdminRoute>
                 }
               />
               <Route
